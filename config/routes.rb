@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :books, only: [:index, :show, :new, :create, :edit, :update] do
     resources :reviews, only: [:new, :show, :edit, :update]
   end
-  resources :users, only: [:show, :new, :edit, :update, :destroy]
+  resources :users
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#logout"

@@ -10,3 +10,17 @@
 <p><%= link_to "Edit this Book", edit_book_path(@book) %></p>
 
 <p><%= link_to  "Books Main Page", books_path %>
+
+<% if !@book.reviews.empty? %>
+    <div>Reviews for <%= @book.title %>: </div>
+
+    <ul>
+        <% @book.reviews.each do |review| %>
+            <li>Rating: <%= review.rating %></li>
+            <li><%= review.comment %> added by <%= review.user.name %></li>
+        <% end %>
+    </ul>
+<% else %>
+    <p>There are no reviews for this book yet</p>
+<% end %>
+

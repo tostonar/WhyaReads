@@ -1,0 +1,15 @@
+<%= form_for @book do |f| %>
+    <div> <%= f.label "Title" %>
+    <%= f.text_field :title %> </div><br>
+    <div> <%= f.label "Author" %>
+    <%= f.collection_select :author_id, Author.all, :id, :name %> </div><br>
+    <div> <%= f.label "Category" %>
+    <%= f.select :category, @categories %></div><br>
+    <div> <%= f.label "Description" %>
+    <%= f.text_area :description, size: "100x10" %> </div><br>
+    <div> <%= f.label "Purchase Link" %>
+    <%= f.text_field :purchase_url, size: "100" %> </div><br>
+    <div> <%= f.label "Image Link" %>
+    <%= f.text_field :image_url, size: "103" %> </div><br>
+    <div> <%= f.submit %> </div><br>
+<% end %>

@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :find_book, only: [:show]
+  before_action :find_book, only: [:show, :edit, :update]
 
   def index
     @books = Book.all
@@ -21,6 +21,18 @@ class BooksController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+    @categories = Book.all.collect {|b| b.category}.uniq
+  end
+
+  def update
+    if @book.save
+      redirect_to book_path(@book)
+    else
+      render :edit
+    end
   end
 
   private

@@ -1,11 +1,13 @@
 class ReviewsController < ApplicationController
   before_action :find_book
+
   def new
     @review = Review.new
   end
-
+  
   def create
     byebug
+   
     @review = Review.new(review_params)
     @review.book_id = @book.id
     @review.user_id = current_user.id

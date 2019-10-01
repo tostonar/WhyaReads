@@ -6,6 +6,8 @@
     <%= f.text_field :title %> </div><br>
     <div> <%= f.label "Author" %>
     <%= f.collection_select :author_id, Author.all, :id, :name %> </div><br>
+    <div> <%= f.label "Category" %>
+    <%= f.select :category, @categories %></div><br>
     <div> <%= f.label "Description" %>
     <%= f.text_area :description %> </div><br>
     <div> <%= f.label "Purchase Link" %>

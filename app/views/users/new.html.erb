@@ -1,9 +1,9 @@
-<h1>Add new User:</h1>
+<h1>Create a new User or <%= link_to  "Login", login_path %>:</h1>
 
 <%= form_for @user do |f| %>
-    <div> <%= f.label "Name" %>
+    <div> <%= f.label :name %>
     <%= f.text_field :name %> </div><br>
-    <div><%= f.label "Email" %>
+    <div><%= f.label :email %>
     <%= f.text_field :email %></div><br>
     <div><%= f.label "Password" %>
     <%= f.password_field :password %></div><br>

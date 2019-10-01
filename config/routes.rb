@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :authors, only: [:index, :show]
   resources :books, only: [:index, :show, :new, :create, :edit, :update] do
-    resources :reviews, only: [:new, :show, :edit, :update]
+  resources :reviews, only: [:new, :show, :edit, :update]
   end
   resources :users
   get '/login', to: "sessions#new"

@@ -24,16 +24,8 @@
     <p>There are no reviews for this book yet</p>
 <% end %>
 
-<div>
-<%= form_for @book do |f| %>
-   <%= f.fields_for :reviews do |rf| %>
-        <%= rf.label :rating %>
-        <%= rf.select :rating, (1..5) %>
-        <%= rf.label :comment %>
-        <%= rf.text_area :comment %>      
-    <% end %>
-    <%= f.submit value="Add Review"%>
-<% end %>
-</div>
+
+<div><%= link_to  "Add Book Review", new_book_review_path(@book) %></div>
+
 
 

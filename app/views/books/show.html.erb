@@ -1,0 +1,10 @@
+<h1><%= @book.title %></h1>
+<h3>Author: <%= link_to @book.author.name, authors_path(@book.author) %></h3>
+<%= image_tag(@book.image_url, height: 400)  %>
+
+<h4>Category: <%= @book.category %></h4>
+
+<p>Description: <%= @book.description %></p>
+<p><%= link_to  "Buy Here", @book.purchase_url %></p>
+
+<p><%= link_to  "Books Main Page", books_path %>

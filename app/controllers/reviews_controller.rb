@@ -3,10 +3,11 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @review = @book.reviews.build
   end
   
   def create
-    byebug
+    
    
     @review = Review.new(review_params)
     @review.book_id = @book.id

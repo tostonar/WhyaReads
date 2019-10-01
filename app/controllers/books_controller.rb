@@ -8,14 +8,16 @@ class BooksController < ApplicationController
   def new
     @book = Book.new
     @categories = Book.all.collect {|b| b.category}.uniq
+    @book.reviews.build
   end
 
   def create
-    
+    @review = Review.new(review_attributes)
     @book = Book.create(book_params)
     if @book.save
       redirect_to book_path(@book)
     else
+      @book.reviews.build
       render :new
     end
   end
@@ -41,7 +43,7 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :author_id, :description, :purchase_url, :image_url)
+    params.require(:book).permit(:title, :author_id, :description, :purchase_url, :image_url, reviews_attributes: [:user_id, :comment, :rating])
   end
 
 end

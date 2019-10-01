@@ -7,4 +7,6 @@
 <p>Description: <%= @book.description %></p>
 <p><%= link_to  "Buy Here", @book.purchase_url %></p>
 
+<p><%= link_to "Edit this Book", edit_book_path(@book) %></p>
+
 <p><%= link_to  "Books Main Page", books_path %>

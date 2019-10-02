@@ -1,12 +1,12 @@
 class ReviewsController < ApplicationController
   before_action :find_book
+  before_action :authorized
 
   def new
     @review = Review.new
     # byebug
     # @review = @book.reviews.build
     # raise params.inspect
-    
   end
   
   def create

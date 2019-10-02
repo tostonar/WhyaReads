@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :find_book, only: [:show, :edit, :update]
+  before_action :authorized, only: [:new, :create, :edit, :update]
 
   def index
     @books = Book.all
@@ -27,7 +28,6 @@ class BooksController < ApplicationController
   end
 
   def edit
-    
     @categories = Book.all.collect {|b| b.category}.uniq
   end
 

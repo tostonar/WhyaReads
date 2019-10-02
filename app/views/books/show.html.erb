@@ -7,7 +7,9 @@
 <p>Description: <%= @book.description %></p>
 <p><%= link_to  "Buy Here", @book.purchase_url %></p>
 
+<% if current_user %>
 <p><%= link_to "Edit this Book", edit_book_path(@book) %></p>
+<% end %>
 
 <p><%= link_to  "Books Main Page", books_path %>
 
@@ -24,8 +26,8 @@
     <p>There are no reviews for this book yet</p>
 <% end %>
 
-
+<% if current_user %>
 <div><%= link_to  "Add Book Review", new_review_path %></div>
-
+<% end %>
 
 

@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
   belongs_to :author
   has_many :reviews
-  has_many :book_shelves
+  has_many :lists
 
   accepts_nested_attributes_for :reviews
 

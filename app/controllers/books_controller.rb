@@ -9,7 +9,9 @@ class BooksController < ApplicationController
   def new
     @book = Book.new
     @categories = Book.all.collect {|b| b.category}.uniq
+    # @statuses = List.all.collect {|l| l.status}.uniq
     @book.reviews.build
+    # @book.lists.build
   end
 
   def create
@@ -19,6 +21,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book)
     else
       @book.reviews.build
+      # @book.lists.build
       render :new
     end
   end

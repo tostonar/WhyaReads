@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_02_171124) do
+ActiveRecord::Schema.define(version: 2019_10_02_181111) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 2019_10_02_171124) do
     t.integer "user_id"
     t.index ["author_id"], name: "index_books_on_author_id"
     t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "status"
+    t.integer "user_id"
+    t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|

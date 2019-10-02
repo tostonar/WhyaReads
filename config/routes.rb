@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
   
-  get 'shelves/new'
-  get 'shelves/create'
-  get 'shelves/edit'
-  get 'shelves/update'
   resources :authors, only: [:index, :show]
   resources :books, only: [:index, :show, :new, :create, :edit, :update] 
   resources :reviews, only: [:new,  :create, :show, :edit, :update]
+  resources :lists, only: [:new, :create]
   
   resources :users
   get '/login', to: "sessions#new"

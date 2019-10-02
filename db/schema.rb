@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_01_181726) do
+ActiveRecord::Schema.define(version: 2019_10_02_171124) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "book_shelves", force: :cascade do |t|
+    t.integer "shelf_id"
+    t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_shelves_on_book_id"
+    t.index ["shelf_id"], name: "index_book_shelves_on_shelf_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -28,7 +37,9 @@ ActiveRecord::Schema.define(version: 2019_10_01_181726) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["author_id"], name: "index_books_on_author_id"
+    t.index ["user_id"], name: "index_books_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -40,6 +51,13 @@ ActiveRecord::Schema.define(version: 2019_10_01_181726) do
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_reviews_on_book_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "shelves", force: :cascade do |t|
+    t.string "status"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

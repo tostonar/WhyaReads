@@ -28,6 +28,7 @@ class BooksController < ApplicationController
 
   def show
     cookies[:book_id] = @book.id
+    @list = List.find {|l| l.book_id == @book.id && l.user_id == current_user.id}
   end
 
   def edit

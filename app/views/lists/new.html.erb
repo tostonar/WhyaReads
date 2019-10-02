@@ -1,7 +1,4 @@
 <h1> Add <%= @book.title %> to your shelf </h1>
 
-<%= form_for @list do |f| %>
-    <%= f.select :status, options_for_select(["Currently reading", "Want to read", "Read"]) %>
-    <%= f.submit  "Add to Shelf" %>
-<% end %>
+<%= render "form" %>
 

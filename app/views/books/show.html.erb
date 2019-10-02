@@ -6,7 +6,7 @@
     <% if !current_user.lists.any? {|l| l.book_id == cookies[:book_id]} %>
         <p><%= link_to "Add this book to your bookshelf", new_list_path %></p>
     <% else %>
-        <p>Change bookshelf</p>
+        <p><%= link_to "Change bookshelf", edit_list_path(@list) %></p>
     <% end %>
 <% end %>
 

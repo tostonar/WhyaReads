@@ -1,0 +1,4 @@
+<%= form_for @list do |f| %>
+    <%= f.select :status, options_for_select(["Currently reading", "Want to read", "Read"]) %>
+    <%= f.submit  "Add to Shelf" %>
+<% end %>

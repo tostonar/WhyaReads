@@ -1,4 +1,4 @@
-<h1> Add <%= cookies[:book_id].name %> to your shelf %>
+<h1> Add <%= @book.title %> to your shelf %>
 
 <%= form_for @list do |f| %>
     <%= f.collection_select :status, @statuses, :status, :status %>

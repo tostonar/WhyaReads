@@ -23,13 +23,16 @@ class BooksController < ApplicationController
   end
 
   def show
+    cookies[:book_id] = @book.id
   end
 
   def edit
+    
     @categories = Book.all.collect {|b| b.category}.uniq
   end
 
   def update
+    @categories = Book.all.collect {|b| b.category}.uniq
     if @book.update(book_params)
       redirect_to book_path(@book)
     else
@@ -43,7 +46,7 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :author_id, :description, :purchase_url, :image_url, :category, reviews_attributes: [:user_id, :comment, :rating, :book_id])
+    params.require(:book).permit(:title, :author_id, :description, :purchase_url, :image_url, :category, reviews_attributes: [:id, :comment, :rating])
   end
 
 end

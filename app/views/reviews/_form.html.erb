@@ -1,12 +1,17 @@
 <div>
-<%= form_for @book do |f| %>
-   <%= f.fields_for :reviews do |rf| %>
-        <div><%= rf.label :rating %>
-        <%= rf.select :rating, (1..5) %></div><br>
-        <div><%= rf.label :comment %>
-        <%= rf.text_area :comment %></div><br>     
-    <% end %>
-    <%= f.submit value="Add Review"%>
+<%= @book.title %>
+<%= form_for @review do |form| %>
+   
+        <div><%= form.label :rating %>
+        <%= form.select :rating, (1..5) %></div><br>
+        <div><%= form.label :comment %>
+        <%= form.text_area :comment %></div><br>
+        
+        <%= form.button :submit %>    
+    
 <% end %>
+
+
+
 </div>
 

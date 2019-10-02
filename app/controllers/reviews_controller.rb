@@ -3,15 +3,15 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    @review = @book.reviews.build
+    # byebug
+    # @review = @book.reviews.build
+    # raise params.inspect
+    
   end
   
   def create
+    @review = Review.new(comment: review_params[:comment], rating: review_params[:rating], book_id: @book.id, user_id: current_user.id)
     
-   
-    @review = Review.new(review_params)
-    @review.book_id = @book.id
-    @review.user_id = current_user.id
     if @review.save
       redirect_to book_path(@book)
     else
@@ -39,7 +39,7 @@ class ReviewsController < ApplicationController
   end
 
   def find_book
-    @book = Book.find(params[:book_id])
+    @book = Book.find(cookies[:book_id])
   end
 
 end

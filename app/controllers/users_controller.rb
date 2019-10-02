@@ -17,6 +17,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    if params[:status]
+      lists = List.select{|l| l.status == params[:status] && l.user_id == current_user.id}
+      @books = lists.map {|l| l.book}
+    else
+      @books = List.select {|l| l.user_id == current_user.id}.map {|l| l.book}
+    end
   end
 
   def edit

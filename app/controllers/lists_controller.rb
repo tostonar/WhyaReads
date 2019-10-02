@@ -1,5 +1,10 @@
 class ListsController < ApplicationController
   before_action :find_book, only: [:new, :create]
+
+  def index
+    @lists = List.all
+  end
+  
   def new
     @list = List.new
   end

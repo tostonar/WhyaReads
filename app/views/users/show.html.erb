@@ -1,7 +1,7 @@
 <h1><%= @user.name %></h1>
 
 <h3>All My Books</h4>
-<%= form_tag lists_path, method: "get" do %>
+<%= form_tag user_path(current_user.id), method: "get" do %>
   <%= select_tag :status, options_for_select(["Currently reading", "Want to read", "Read"]),
        prompt: "Select Bookshelf" %>
   <%= submit_tag "Submit" %>

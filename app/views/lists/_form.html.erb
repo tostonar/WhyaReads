@@ -1,4 +1,8 @@
 <%= form_for @list do |f| %>
-    <%= f.select :status, options_for_select(["Currently reading", "Want to read", "Read"]) %>
-    <%= f.submit  "Add to Shelf" %>
+  <div class="input-group mb-3">
+    <%= f.select :status, options_for_select(["Currently reading", "Want to read", "Read"]), {}, class: 'form-control' %>
+    <div class="input-group-append">
+      <%= f.submit  "Add to Shelf", class: 'btn btn-outline-primary' %>
+    </div>
+  </div>
 <% end %>

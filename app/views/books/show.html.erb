@@ -19,9 +19,9 @@
 
 <p><%= link_to  "Buy Here", @book.purchase_url %></p>
 
-<h5>Reviews</h5>
+<h5>Reviews for <%= @book.title %></h5>
 <% if !@book.reviews.empty? %>
-    <div>Reviews for <%= @book.title %>: </div>
+    
 
     <ul class="list-group list-group-flush">
         <% @book.reviews.each do |review| %>

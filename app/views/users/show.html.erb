@@ -15,7 +15,7 @@
 <h3>My Reviews</h3>
 <% if @user.reviews.any? %>
   <% @user.reviews.each do |review| %>
-  <p><%= review.book.title %>: <%= review.comment %> - rating: <%= review.rating %>  <%= link_to  "Edit Review", edit_review_path(review.id) %></p>
+  <p><%= review.book.title %>: <%= review.comment %> - rating: <%= review.rating %>  <%= link_to  "Edit Review", edit_review_path(review.id) %>  <%= link_to  "Delete Review", review_path(review), method: :delete, data: {confirm: 'Are you sure?'} %></p>
   <% end %>
 <% else %>
   <p>You don't have any reviews yet.</p>

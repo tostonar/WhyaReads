@@ -12,4 +12,9 @@
 <% end %>
 </ul>
 
+<h3>My Reviews</h3>
+<% @user.reviews.each do |review| %>
+<p><%= review.book.title %>: <%= review.comment %> - rating: <%= review.rating %></p>
+<% end %>
+
 

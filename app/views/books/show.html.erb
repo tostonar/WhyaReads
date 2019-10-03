@@ -1,5 +1,5 @@
 <h1><%= @book.title %></h1>
-<h3>Author: <%= link_to @book.author.name, authors_path(@book.author) %></h3>
+<h3>Author: <%= link_to @book.author.name, author_path(@book.author) %></h3>
 <%= image_tag(@book.image_url, height: 400)  %>
 
 <% if current_user %>

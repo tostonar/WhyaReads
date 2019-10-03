@@ -13,6 +13,10 @@ class Book < ApplicationRecord
     review_count = self.reviews.size.to_f
     review_ratings = self.reviews.map(&:rating)
     review_sum = review_ratings.sum
-    review_sum / review_count
+    if review_count == 0
+      return "No ratings yet" 
+    else
+      review_sum / review_count
+    end
   end
 end

@@ -1,5 +1,5 @@
 <h1><%= @book.title %></h1>
-<h3>Average Rating: <%= @book.average_rating %> out of 5</h3>
+<h3>Average Rating: <%= @book.average_rating %> Scale (1-5)</h3>
 <h3>Author: <%= link_to @book.author.name, author_path(@book.author) %></h3>
 <%= image_tag(@book.image_url, height: 400)  %>
 
@@ -12,32 +12,34 @@
     <% end %>
 <% end %>
 
-<h4>Category: <%= @book.category %></h4>
+<h6>Category: <%= @book.category %></h6>
 
-<p>Description: <%= @book.description %></p>
+<h5>Description</h5>
+<p><%= @book.description %></p>
+
 <p><%= link_to  "Buy Here", @book.purchase_url %></p>
 
-<% if current_user %>
-<p><%= link_to "Edit this Book", edit_book_path(@book) %></p>
-<% end %>
-
-<p><%= link_to  "Books Main Page", books_path %>
-
+<h5>Reviews</h5>
 <% if !@book.reviews.empty? %>
     <div>Reviews for <%= @book.title %>: </div>
 
     <ul>
         <% @book.reviews.each do |review| %>
-            <li>Rating: <%= review.rating %></li>
-            <li><%= review.comment %> added by <%= review.user.name %></li>
+            <li><%= review.user.name %> gave it a rating of <%= review.rating %> - <%= review.comment %></li>
         <% end %>
     </ul>
 <% else %>
-    <p>There are no reviews for this book yet</p>
+    <p>There are no reviews for this book yet. Be the first!</p>
 <% end %>
 
 <% if current_user %>
-<div><%= link_to  "Add Book Review", new_review_path %></div>
+<p><%= link_to  "Add Book Review", new_review_path %></p>
 <% end %>
+
+<% if current_user %>
+<p><%= link_to "Edit this Book", edit_book_path(@book) %></p>
+<% end %>
+
+<p><%= link_to  "Books Main Page", books_path %></p>
 
 

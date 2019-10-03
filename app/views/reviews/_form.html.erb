@@ -1,13 +1,17 @@
 <div>
-<%= @book.title %>
+<h2><%= @book.title %></h2>
 <%= form_for @review do |form| %>
    
-        <div><%= form.label :rating %>
-        <%= form.select :rating, (1..5) %></div><br>
-        <div><%= form.label :comment %>
-        <%= form.text_area :comment %></div><br>
+        <div class="form-group">
+        <%= form.label :rating %>
+        <%= form.select :rating, (1..5), {}, {:class => 'form-control'} %>
+        </div>
+        <div class="form-group">
+        <%= form.label :comment %>
+        <%= form.text_area :comment, class: 'form-control' %>
+        </div>
         
-        <%= form.button :submit %>    
+        <%= form.button :submit, class: 'btn btn-primary' %>    
     
 <% end %>
 

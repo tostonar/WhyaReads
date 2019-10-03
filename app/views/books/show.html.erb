@@ -23,9 +23,9 @@
 <% if !@book.reviews.empty? %>
     <div>Reviews for <%= @book.title %>: </div>
 
-    <ul>
+    <ul class="list-group list-group-flush">
         <% @book.reviews.each do |review| %>
-            <li><%= review.user.name %> gave it a rating of <%= review.rating %> - <%= review.comment %></li>
+            <li class="list-group-item"><%= review.user.name %> gave it a rating of <%= review.rating %> - <%= review.comment %></li>
         <% end %>
     </ul>
 <% else %>

@@ -11,7 +11,6 @@ class ReviewsController < ApplicationController
   
   def create
     @review = Review.new(comment: review_params[:comment], rating: review_params[:rating], book_id: @book.id, user_id: current_user.id)
-    
     if @review.save
       redirect_to book_path(@book)
     else
@@ -24,9 +23,10 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review.update(review_params)
+    @review = Review.find_by(id: params[:id])
+    @review.update(comment: review_params[:comment], rating: review_params[:rating], book_id: @book.id, user_id: current_user.id)
     if @review.save
-      redirect_to new_book_review(@review)
+      redirect_to user_path(current_user)
     else
       render :edit
     end

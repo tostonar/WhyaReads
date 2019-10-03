@@ -8,4 +8,11 @@ class Book < ApplicationRecord
   validates :title, uniqueness: {case_sensitive: false}
   validates :author, presence: true
   validates :category, presence: true
+
+  def average_rating
+    review_count = self.reviews.size.to_f
+    review_ratings = self.reviews.map(&:rating)
+    review_sum = review_ratings.sum
+    review_sum / review_count
+  end
 end

@@ -1,7 +1,8 @@
+<div class="container">
 <h1>WhyA Reads - Review and Save Your Favorite YA Books</h1>
 <% @books.each do |book| %>
-<ul>
-  <li><%= link_to  book.title, book_path(book) %></li>
+<ul class="list-group">
+  <li class="list-group-item"><%= link_to  book.title, book_path(book) %></li>
 </ul>
 <% end %>
 
@@ -9,4 +10,8 @@
 <p> <%= link_to "Add a new Book", new_book_path %></p>
 <%= link_to  "Go to my Profile", user_path(current_user.id) %>
 <% end %>
+<<<<<<< HEAD
 <p><%= link_to  "Authors Index", authors_path %>
+=======
+</div>
+>>>>>>> styles

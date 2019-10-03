@@ -6,8 +6,5 @@
 </ul>
 <% end %>
 
-<% if current_user %>
-<p> <%= link_to "Add a new Book", new_book_path %></p>
-<%= link_to  "Go to my Profile", user_path(current_user.id) %>
-<% end %>
+
 

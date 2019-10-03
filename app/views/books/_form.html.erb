@@ -6,11 +6,11 @@
     </div>
     <div class="form-group">
       <%= f.label "Author" %>
-      <%= f.collection_select :author_id, Author.all, :id, :name %> 
+      <%= f.collection_select :author_id, Author.all, :id, :name, {}, {required: 'true', autofocus: 'true', class: 'form-control'} %> 
     </div>
     <div class="form-group">
       <%= f.label "Category" %>
-      <%= f.select :category, @categories %>
+      <%= f.select(:category, @categories, {}, {:class => 'form-control'}) %>
     </div>
     <div class="form-group"> 
       <%= f.label "Description" %>

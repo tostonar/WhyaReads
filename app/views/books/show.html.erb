@@ -9,14 +9,14 @@
 <div class="row">
  
     <div class="col-md-4">
-        <%= image_tag(@book.image_url, height: 400)  %>
+        <%= image_tag(@book.image_url, height: 400)  %><br>
  
         <% if current_user %>
             <% if !current_user.lists.any? {|l| l.book_id == cookies[:book_id]} %>
                 <p><%= link_to "Add this book to your bookshelf", new_list_path %></p>
             <% else %>
-                <% list = current_user.lists.find {|list| list.book_id == @book.id} %>
-                <p><%= link_to "Change bookshelf", edit_list_path(list) %></p>
+                <% list = current_user.lists.find {|list| list.book_id == @book.id} %><br>
+                <p><%= link_to "Change bookshelf", edit_list_path(list), class: 'btn btn-primary' %></p>
             <% end %>
         <% end %>
     </div>
@@ -28,10 +28,10 @@
         <p><%= link_to  "Buy Here", @book.purchase_url %></p>
  
         <% if current_user %>
-        <p><%= link_to "Edit this Book", edit_book_path(@book) %></p>
+        <p><%= link_to "Edit this Book", edit_book_path(@book), class: 'btn btn-primary' %></p>
         <% end %>
  
-        <p><%= link_to  "Books Main Page", books_path %>
+        <p><%= link_to  "Books Main Page", books_path  %>
  
     </div>
 </div>

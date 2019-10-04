@@ -12,7 +12,11 @@
 <p>Our most recent user is <%= most_recent_user.first.name %>. Welcome to the app!
 <% most_read = List.where(status: "Read").map(&:book_id) %>
 <% top_read_book_id = most_read.max_by {|i| most_read.count(i) } %>
-<p>Currently, <%= Book.find(top_read_book_id).title %> is the book that the most people have read.</p>
+<% if List.where(status: "Read").empty? %>
+    <p>No one has put a book on their "read" bookshelf.</p>
+<% else %>
+    <p>Currently, <%= Book.find(top_read_book_id).title %> is the book that the most people have read.</p>
+<% end %>
 <% books_with_ratings = Book.select {|book| book.reviews.any? } %>
 <%  highest_rating = books_with_ratings.max_by{|book| book.average_rating} %>
 <p>The highest rated book is <%= highest_rating.title %>, with a rating of <%= highest_rating.average_rating.to_i %> out of 5. Folks love it!</p>

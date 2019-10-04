@@ -2,7 +2,7 @@ class AuthorsController < ApplicationController
   before_action :find_author, only: [:show]
 
   def index
-    @authors = Author.all
+    @authors = Author.search(params[:search])
   end
 
   def show

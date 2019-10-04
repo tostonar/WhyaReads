@@ -20,15 +20,6 @@ ActiveRecord::Schema.define(version: 2019_10_04_130424) do
     t.string "image"
   end
 
-  create_table "book_shelves", force: :cascade do |t|
-    t.integer "shelf_id"
-    t.integer "book_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_book_shelves_on_book_id"
-    t.index ["shelf_id"], name: "index_book_shelves_on_shelf_id"
-  end
-
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -60,13 +51,6 @@ ActiveRecord::Schema.define(version: 2019_10_04_130424) do
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_reviews_on_book_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
-  end
-
-  create_table "shelves", force: :cascade do |t|
-    t.string "status"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

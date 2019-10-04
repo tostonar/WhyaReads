@@ -1,4 +1,11 @@
 <h1>Authors</h1>
+
+<h2>Search Author: </h2>
+<%= form_tag authors_path, method: "GET" do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search" %>
+<% end %>
+
 <ul>
 <% @authors.each do |author| %>
   <li><%= link_to  author.name, author_path(author) %></li>

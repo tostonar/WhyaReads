@@ -1,6 +1,14 @@
 
 <h1>WhyA Reads - Review YA Books and Track Your Reading</h1>
 
+<div class="book-search">
+<%= form_tag books_path, method: "get" do %>
+  <%= select_tag :category, options_for_select(["All", "Coming of Age", "Fantasy", "Fiction", "LGBT Friendly", "Science Fiction", "Thriller"]),
+       prompt: "Filter by category" %>
+  <%= submit_tag "Submit", class:"btn btn-primary" %>
+<% end %>
+</div>
+
 <div class="row">
 
   <% @books.each do |book| %>

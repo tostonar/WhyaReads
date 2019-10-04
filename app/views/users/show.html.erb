@@ -2,11 +2,13 @@
 <h1>Hello <%= @user.name %>!</h1>
 
 <h3>All My Books</h4>
+
 <%= form_tag user_path(current_user.id), method: "get" do %>
   <%= select_tag :status, options_for_select(["All", "Currently reading", "Want to read", "Read"]),
        prompt: "Select Bookshelf" %>
   <%= submit_tag "Submit", class:"btn btn-primary" %>
-  <% end %>
+<% end %>
+
 <ul>
 <% @books.each do |book| %>
   <li><%= link_to book.title, book_path(book) %></li>

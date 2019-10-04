@@ -1,11 +1,22 @@
-<h1><%= @author.name %></h1>
-<p><%=  @author.bio %></p>
-<h4>Books by <%= @author.name %></h4>
-<ul>
+<div class="row">
+ 
+    <div class="col-md-4">
+      <%= image_tag @author.image, class: "author-image" %>
+    </div>
+
+    <div class="col-md-8">
+      <h1><%= @author.name %></h1>
+      <p><%=  @author.bio %></p>
+    </div>
+    
+    <h4>Books by <%= @author.name %></h4>
+  </div>
+  
+  <ul>
   <% @author.books.each do |book| %>
-  <li><%= link_to  book.title, book_path(book) %></li>
+  <li><%= link_to  book.title, book_path(book)%></li>
   <% end %>
-</ul>
-<p><%= link_to  "Authors Main Page", authors_path %>
+  </ul>
+  <p><%= link_to  "Authors Main Page", authors_path %>
 
 

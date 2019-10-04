@@ -3,7 +3,15 @@ class BooksController < ApplicationController
   before_action :authorized, only: [:new, :create, :edit, :update]
 
   def index
-    @books = Book.all
+    if params[:category]
+      if params[:category] == "All"
+        @books = Book.all
+      else
+        @books = Book.select {|b| b.category == params[:category]}
+      end
+    else
+      @books = Book.all
+    end
   end
 
   def new

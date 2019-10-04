@@ -18,9 +18,19 @@ $enable-gradients : true;
 
 
 .book-image {
-
     height: 350px;
     width: 250px;
     padding: 5px;
+}
 
+.author-image {
+    height: 350px;
+    width: 300px;
+}
+
+.book-search {
+    padding: 15px;
+    align-content: center;
+    height: 10;
+    width: 10;
 }

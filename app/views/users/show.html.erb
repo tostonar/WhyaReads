@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class="jumbotron">
 <h1>Hello <%= @user.name %>!</h1>
 
@@ -19,7 +21,10 @@
 <% if @user.reviews.any? %>
   <p>You have reviewed <%= @user.reviews.count %> books. Thanks!</p>
   <% @user.reviews.each do |review| %>
-  <p><%= review.book.title %>: <%= review.comment %> - rating: <%= review.rating %>  <%= link_to  "Edit Review", edit_review_path(review.id), class: 'btn btn-info' %>  <%= link_to  "Delete Review", review_path(review), class: 'btn btn-danger',method: :delete, data: {confirm: 'Are you sure?'} %></p>
+  <p><%= review.book.title %>: <%= review.comment %> - rating: <% review.rating.to_i.times do %>
+    <span class="fa fa-star checked"></span>
+  <% end %>  
+    <%= link_to  "Edit Review", edit_review_path(review.id), class: 'btn btn-info' %>  <%= link_to  "Delete Review", review_path(review), class: 'btn btn-danger',method: :delete, data: {confirm: 'Are you sure?'} %></p>
   <% end %>
 <% else %>
   <p>You don't have any reviews yet.</p>

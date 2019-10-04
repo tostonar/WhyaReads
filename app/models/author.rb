@@ -4,7 +4,7 @@ class Author < ApplicationRecord
   def self.search(search)
         
     if search
-      Author.select {|a| a.name.include? (search.capitalize)}
+      result = Author.select {|a| a.name.include? (search.capitalize)}
     else
       Author.all
     end

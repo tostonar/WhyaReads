@@ -1,45 +1,51 @@
 <h1><%= @book.title %></h1>
-<h3>Average Rating: <%= @book.average_rating %> Scale (1-5)</h3>
+<h3>Average Rating: <%= @book.average_rating %></h3>
 <h3>Author: <%= link_to @book.author.name, author_path(@book.author) %></h3>
-<%= image_tag(@book.image_url, height: 400)  %>
-
-<% if current_user %>
-    <% if !current_user.lists.any? {|l| l.book_id == cookies[:book_id]} %>
-        <p><%= link_to "Add this book to your bookshelf", new_list_path %></p>
-    <% else %>
-        <% list = current_user.lists.find {|list| list.book_id == @book.id} %>
-        <p><%= link_to "Change bookshelf", edit_list_path(list) %></p>
-    <% end %>
-<% end %>
-
-<h6>Category: <%= @book.category %></h6>
-
-<h5>Description</h5>
-<p><%= @book.description %></p>
-
-<p><%= link_to  "Buy Here", @book.purchase_url %></p>
-
-<h5>Reviews for <%= @book.title %></h5>
+ 
+<div class="row">
+ 
+    <div class="col-md-4">
+        <%= image_tag(@book.image_url, height: 400)  %>
+ 
+        <% if current_user %>
+            <% if !current_user.lists.any? {|l| l.book_id == cookies[:book_id]} %>
+                <p><%= link_to "Add this book to your bookshelf", new_list_path %></p>
+            <% else %>
+                <% list = current_user.lists.find {|list| list.book_id == @book.id} %>
+                <p><%= link_to "Change bookshelf", edit_list_path(list) %></p>
+            <% end %>
+        <% end %>
+    </div>
+ 
+    <div class="col-md-8">
+ 
+        <h4>Category: <%= @book.category %></h4>
+        <p>Description: <%= @book.description %></p>
+        <p><%= link_to  "Buy Here", @book.purchase_url %></p>
+ 
+        <% if current_user %>
+        <p><%= link_to "Edit this Book", edit_book_path(@book) %></p>
+        <% end %>
+ 
+        <p><%= link_to  "Books Main Page", books_path %>
+ 
+    </div>
+</div>
+ 
 <% if !@book.reviews.empty? %>
-    <p>There are <%= @book.reviews.count %> review(s) for this book.</p>
-
-    <ul class="list-group list-group-flush">
+    <div>Reviews for <%= @book.title %>: </div>
+ 
+    <ul>
         <% @book.reviews.each do |review| %>
-            <li class="list-group-item"><%= review.user.name %> gave it a rating of <%= review.rating %> - <%= review.comment %></li>
+            <li>Rating: <%= review.rating %></li>
+            <li><%= review.comment %> added by <%= review.user.name %></li>
         <% end %>
     </ul>
 <% else %>
-    <p>There are no reviews for this book yet. Be the first!</p>
+    <p>There are no reviews for this book yet</p>
 <% end %>
-
+ 
 <% if current_user %>
-<p><%= link_to  "Add Book Review", new_review_path %></p>
+<div><%= link_to  "Add Book Review", new_review_path %></div>
 <% end %>
-
-<% if current_user %>
-<p><%= link_to "Edit this Book", edit_book_path(@book) %></p>
-<% end %>
-
-<p><%= link_to  "Books Main Page", books_path %></p>
-
-
+ 

@@ -1,10 +1,19 @@
 
 <h1>WhyA Reads - Review YA Books and Track Your Reading</h1>
-<% @books.each do |book| %>
-<ul class="list-group">
-  <li class="list-group-item list-group-item-action"><%= link_to  book.title, book_path(book) %></li>
-</ul>
-<% end %>
+
+<div class="row">
+
+  <% @books.each do |book| %>
+
+    <div class="mcol-md-3">
+
+      <a href="/books/<%=book.id %>"><%= image_tag book.image_url, class: "book-image" %>
+
+    </div>
+
+  <% end %>
+
+</div>
 
 
 

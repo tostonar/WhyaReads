@@ -37,8 +37,8 @@
  
     <ul>
         <% @book.reviews.each do |review| %>
-            <li>Rating: <%= review.rating %></li>
-            <li><%= review.comment %> added by <%= review.user.name %></li>
+            
+            <li><%= review.user.name %> says: <%= review.comment %> -  Rating: <%= review.rating %></li>
         <% end %>
     </ul>
 <% else %>

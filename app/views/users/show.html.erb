@@ -21,9 +21,9 @@
 <% if @user.reviews.any? %>
   <p>You have reviewed <%= @user.reviews.count %> books. Thanks!</p>
   <% @user.reviews.each do |review| %>
-  <p><%= review.book.title %>: <%= review.comment %> - rating: <% review.rating.to_i.times do %>
+  <p><%= link_to review.book.title, book_path(review.book.id) %>: <%= review.comment %> - rating: <% review.rating.to_i.times do %>
     <span class="fa fa-star checked"></span>
-  <% end %>  
+  <% end %><br>
     <%= link_to  "Edit Review", edit_review_path(review.id), class: 'btn btn-info' %>  <%= link_to  "Delete Review", review_path(review), class: 'btn btn-danger',method: :delete, data: {confirm: 'Are you sure?'} %></p>
   <% end %>
 <% else %>

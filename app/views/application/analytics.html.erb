@@ -1,11 +1,20 @@
-<h1> WhyA Reads Analytics</h1>
+<div class="row">
+  <div class="col-sm">
+    <h1> WhyA Reads Analytics</h1>
+  </div>
+</div>
 
 <p>This app currently has <%= Book.count %> books, written by <%= Author.count %> authors.</p>
 <p>This app has <%= User.count %> users, who have written <%= Review.count %> reviews.</p>
 <% user_most_reviews = User.all.max_by {|user| user.reviews.count} %>
 <p><%=  user_most_reviews.name %> has made the most reviews, with <%= user_most_reviews.reviews.count %>. Kudos to <%=  user_most_reviews.name %>!</p>
+<% most_recent_user = User.order(created_at: :desc).limit(1) %>
+<p>Our most recent user is <%= most_recent_user.first.name %>. Welcome to the app!
 <% most_read = List.where(status: "Read").map(&:book_id) %>
 <% top_read_book_id = most_read.max_by {|i| most_read.count(i) } %>
 <p>Currently, <%= Book.find(top_read_book_id).title %> is the book that the most people have read.</p>
+<% books_with_ratings = Book.select {|book| book.reviews.any? } %>
+<%  highest_rating = books_with_ratings.max_by{|book| book.average_rating} %>
+<p>The highest rated book is <%= highest_rating.title %>, with a rating of <%= highest_rating.average_rating.to_i %> out of 5. Folks love it!</p>
 
 

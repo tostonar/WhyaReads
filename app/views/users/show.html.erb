@@ -5,7 +5,7 @@
 <%= form_tag user_path(current_user.id), method: "get" do %>
   <%= select_tag :status, options_for_select(["All", "Currently reading", "Want to read", "Read"]),
        prompt: "Select Bookshelf" %>
-  <%= submit_tag "Submit" %>
+  <%= submit_tag "Submit", class:"btn btn-primary" %>
   <% end %>
 <ul>
 <% @books.each do |book| %>
@@ -15,6 +15,7 @@
 
 <h3>My Reviews</h3>
 <% if @user.reviews.any? %>
+  <p>You have reviewed <%= @user.reviews.count %> books. Thanks!</p>
   <% @user.reviews.each do |review| %>
   <p><%= review.book.title %>: <%= review.comment %> - rating: <%= review.rating %>  <%= link_to  "Edit Review", edit_review_path(review.id), class: 'btn btn-info' %>  <%= link_to  "Delete Review", review_path(review), class: 'btn btn-danger',method: :delete, data: {confirm: 'Are you sure?'} %></p>
   <% end %>

@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(comment: review_params[:comment], rating: review_params[:rating], book_id: @book.id, user_id: current_user.id)
     if @review.save
+      List.create(status: "Read", user_id: current_user.id, book_id: @book.id)
       redirect_to book_path(@book)
     else
       render :new

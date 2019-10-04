@@ -1,5 +1,9 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <h1><%= @book.title %></h1>
-<h3>Average Rating: <%= @book.average_rating %></h3>
+<h3>Average Rating: <% @book.average_rating.to_i.times do %>
+    <span class="fa fa-star checked"></span>
+<% end %>
 <h3>Author: <%= link_to @book.author.name, author_path(@book.author) %></h3>
  
 <div class="row">
@@ -38,7 +42,11 @@
     <ul>
         <% @book.reviews.each do |review| %>
             
-            <li><%= review.user.name %> says: <%= review.comment %> -  Rating: <%= review.rating %></li>
+            <li><%= review.user.name %> says: <%= review.comment %> -  Rating: 
+            <% review.rating.to_i.times do  %>
+                <span class="fa fa-star checked"></span>
+            <% end %>
+            </li>
         <% end %>
     </ul>
 <% else %>
